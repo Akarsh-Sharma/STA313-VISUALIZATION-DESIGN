@@ -1,0 +1,64 @@
+---
+title: "STA313 A1"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+```{r, echo = FALSE, message = FALSE, warning=FALSE}
+library(ggplot2)
+library(tidyverse)
+library(tidyr)
+setwd("C:/Users/akars/OneDrive/Desktop/sta313 a1/")
+movies_data <- read.csv("toronto-movies.csv")
+
+filtered_movies_data <- data.frame(movies_data$awards, movies_data$genre, movies_data$imdb_rating)
+
+
+genre_crime <- filtered_movies_data[grep("Crime", filtered_movies_data$movies_data.genre),]
+genre_drama <- filtered_movies_data[grep("Drama", filtered_movies_data$movies_data.genre),]
+genre_thriller <- filtered_movies_data[grep("Thriller", filtered_movies_data$movies_data.genre),]
+genre_adventure <- filtered_movies_data[grep("Adventure", filtered_movies_data$movies_data.genre),]
+genre_comedy <- filtered_movies_data[grep("Comedy",filtered_movies_data$movies_data.genre),]
+genre_romance <- filtered_movies_data[grep("Romance", filtered_movies_data$movies_data.genre),]
+genre_action <- filtered_movies_data[grep("Action", filtered_movies_data$movies_data.genre),]
+genre_scifi <- filtered_movies_data[grep("Sci-Fi",filtered_movies_data$movies_data.genre),]
+genre_biography <- filtered_movies_data[grep("Biography", filtered_movies_data$movies_data.genre),]
+genre_sport <- filtered_movies_data[grep("Sport",filtered_movies_data$movies_data.genre),]
+genre_horror <- filtered_movies_data[grep("Horror", filtered_movies_data$movies_data.genre),]
+genre_war <- filtered_movies_data[grep("War",filtered_movies_data$movies_data.genre),]
+genre_mystery <- filtered_movies_data[grep("Mystery",filtered_movies_data$movies_data.genre),]
+genre_family <- filtered_movies_data[grep("Family",filtered_movies_data$movies_data.genre),]
+genre_music <- filtered_movies_data[grep("Music",filtered_movies_data$movies_data.genre),]
+genre_musical <- filtered_movies_data[grep("Musical", filtered_movies_data$movies_data.genre),]
+genre_documentary <- filtered_movies_data[grep("Documentary", filtered_movies_data$movies_data.genre),]
+genre_history <- filtered_movies_data[grep("History", filtered_movies_data$movies_data.genre),]
+genre_fantasy <- filtered_movies_data[grep("Fantasy", filtered_movies_data$movies_data.genre),]
+genre_short <- filtered_movies_data[grep("Short", filtered_movies_data$movies_data.genre),]
+
+genre_other <- rbind(genre_war, genre_sport, genre_short, genre_music, genre_musical, genre_history, genre_fantasy, genre_family, genre_documentary, genre_biography, genre_adventure)
+
+
+install.packages("lme4")
+vignette("lmer")
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
